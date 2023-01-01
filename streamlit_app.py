@@ -1,7 +1,7 @@
 import subprocess
 import streamlit as st
 import requests
-
+from bs4 import BeautifulSoup
 
 def install_dependencies(package_file):
     with open(package_file, "r") as f:
@@ -11,8 +11,6 @@ def install_dependencies(package_file):
             subprocess.run(["pip", "install", package])
 
 install_dependencies("Packages.txt")
-
-from bs4 import BeautifulSoup
 
 def get_price():
     URL = "https://www.homedepot.ca/product/frigidaire-gallery-30-inch-5-4-cu-ft-front-control-slide-in-electric-range-with-air-fry-in-stainless-steel/1001318565"
