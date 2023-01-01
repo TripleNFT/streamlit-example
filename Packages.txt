@@ -1,2 +1,2 @@
-pip install streamlit
-pip install bs4
+install streamlit
+install bs4
