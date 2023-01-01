@@ -10,3 +10,4 @@ soup = BeautifulSoup(page.content, 'html.parser')
 price = soup.find('span', class_='price').get_text()
 
 print("The price of the Frigidaire range is: $" + price)
+
