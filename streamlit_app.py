@@ -1,16 +1,17 @@
 import streamlit as st
 import requests
+from bs4 import BeautifulSoup
 
-URL = "https://www.homedepot.ca/product/frigidaire-gallery-30-inch-5-4-cu-ft-front-control-slide-in-electric-range-with-air-fry-in-stainless-steel/1001318565"
+def get_price():
+    URL = "https://www.homedepot.ca/product/frigidaire-gallery-30-inch-5-4-cu-ft-front-control-slide-in-electric-range-with-air-fry-in-stainless-steel/1001318565"
 
-page = requests.get(URL)
+    page = requests.get(URL)
 
-html = page.content
+    soup = BeautifulSoup(page.content, 'html.parser')
 
-start_index = html.index('<span class="price">')
-end_index = html.index('</span>', start_index)
+    price = soup.find('span', class_='price').get_text()
 
-price = html[start_index:end_index].split('>')[-1]
+    return price
 
 st.title("Frigidaire Range Price")
-st.write("The price of the Frigidaire range is: $" + price)
+st.write("The price of the Frigidaire range is: $" + get_price())
