@@ -1,5 +1,5 @@
 import streamlit as st
-install b4
+pip install b4
 import requests
 from bs4 import BeautifulSoup
 
